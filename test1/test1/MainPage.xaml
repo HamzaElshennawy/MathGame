@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Math_Game.MainPage">
+
+    <ScrollView>
+        <StackLayout BackgroundColor="CornflowerBlue" Spacing="7">
+            <StackLayout>
+                <Label Text="Math Helper Game" TextColor="Black" FontSize="35" 
+                   FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Score: " FontSize="30"   FontAttributes="None" HorizontalOptions="EndAndExpand"/>
+                <Label x:Name="ScoreLBL" Text="0" FontSize="30" Margin="0,0,20,0" FontAttributes="None" HorizontalOptions="Start"/>
+            </StackLayout>
+            <StackLayout>
+                <Label x:Name="CorrectLBL" Text="Test" WidthRequest="100" HeightRequest="50" 
+                   HorizontalOptions="Center" FontSize="28" HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center"
+                   Margin="0,30,0,0"
+                   />
+            </StackLayout>
+            <StackLayout  Margin="0,20,0,0" Orientation="Horizontal">
+                <!--<Label x:Name="FirstNumberLBL" Text="First Number"
+               HorizontalOptions="Start" 
+               Margin="23,0,0,0" VerticalOptions="StartAndExpand" 
+                FontSize="25" 
+               FontFamily="Times New Roman" 
+               HorizontalTextAlignment="Center"/>-->
+                <Label x:Name="FirstNumberTB" Text="5" HorizontalOptions="StartAndExpand" 
+                VerticalOptions="End" 
+                FontSize="25" 
+                   Margin="70,0,0,0"
+               FontFamily="Times New Roman" 
+               HorizontalTextAlignment="Center"/>
+                <Label x:Name=" " Text="X"
+               HorizontalOptions="Start" 
+               Margin="50,0,120,0" VerticalOptions="StartAndExpand" 
+                FontSize="25" 
+               FontFamily="Times New Roman" 
+               HorizontalTextAlignment="Center"/>
+                <!--<Label x:Name="SecondNumberLBL" Text="Second Number"
+               HorizontalOptions="StartAndExpand" 
+                VerticalOptions="End" 
+                FontSize="25" 
+                   Margin="40,0,0,0"
+               FontFamily="Times New Roman" 
+               HorizontalTextAlignment="Center"/>-->
+            
+            
+                
+                <Label x:Name="SecondNumberTB" Text="5" HorizontalOptions="End" 
+                VerticalOptions="End"
+                   
+                FontSize="25" 
+                   Margin="0,0,70,0"
+               FontFamily="Times New Roman" 
+               HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout>
+                <Entry x:Name="InputTB" BackgroundColor="Gray" WidthRequest="200" 
+                   HeightRequest="55" HorizontalOptions="CenterAndExpand"
+                   Margin="0,70,0,0"  
+                   Placeholder="Your answer" 
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Keyboard="Numeric"   CharacterSpacing="3"/>
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Check!" HorizontalOptions="CenterAndExpand" WidthRequest="130"
+                    Margin="0,50,0,0"
+                    BackgroundColor="DarkGray"
+                    Clicked="SubmetBTN_Click"
+                    />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
