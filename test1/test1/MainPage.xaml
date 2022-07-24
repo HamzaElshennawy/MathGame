@@ -1,32 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Math_Game.MainPage">
-
-    <ScrollView>
-        <StackLayout BackgroundColor="CornflowerBlue" Spacing="7">
+    <StackLayout Spacing="5">
+        
+        <StackLayout.Background>
+            
+            <LinearGradientBrush x:Name="BackGroundBrush">
+                <GradientStop Color="#013FBC" Offset="0.2"/>
+                <GradientStop Color="#ECD994 " Offset="1"/>
+            </LinearGradientBrush>
+        </StackLayout.Background>
             <StackLayout>
-                <Label Text="Math Helper Game" TextColor="Black" FontSize="35" 
+                <Label Text="Math Helper Game" TextColor="Black" FontSize="35" Margin="20"
                    FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="Score: " FontSize="30"   FontAttributes="None" HorizontalOptions="EndAndExpand"/>
-                <Label x:Name="ScoreLBL" Text="0" FontSize="30" Margin="0,0,20,0" FontAttributes="None" HorizontalOptions="Start"/>
+            <Label Text="Score: " FontSize="30"   FontAttributes="None" HorizontalOptions="EndAndExpand" Margin="0,18,0,0"/>
+                <Label x:Name="ScoreLBL" Text="0" FontSize="30" Margin="0,20,20,0" FontAttributes="None" HorizontalOptions="Start"/>
             </StackLayout>
-            <StackLayout>
-                <Label x:Name="CorrectLBL" Text="Test" WidthRequest="100" HeightRequest="50" 
-                   HorizontalOptions="Center" FontSize="28" HorizontalTextAlignment="Center" 
-                   VerticalTextAlignment="Center"
-                   Margin="0,30,0,0"
-                   />
-            </StackLayout>
-            <StackLayout  Margin="0,20,0,0" Orientation="Horizontal">
-                <!--<Label x:Name="FirstNumberLBL" Text="First Number"
-               HorizontalOptions="Start" 
-               Margin="23,0,0,0" VerticalOptions="StartAndExpand" 
-                FontSize="25" 
-               FontFamily="Times New Roman" 
-               HorizontalTextAlignment="Center"/>-->
+            
+            <StackLayout  Margin="0,80,0,0" Orientation="Horizontal">
                 <Label x:Name="FirstNumberTB" Text="5" HorizontalOptions="StartAndExpand" 
                 VerticalOptions="End" 
                 FontSize="25" 
@@ -39,16 +33,7 @@
                 FontSize="25" 
                FontFamily="Times New Roman" 
                HorizontalTextAlignment="Center"/>
-                <!--<Label x:Name="SecondNumberLBL" Text="Second Number"
-               HorizontalOptions="StartAndExpand" 
-                VerticalOptions="End" 
-                FontSize="25" 
-                   Margin="40,0,0,0"
-               FontFamily="Times New Roman" 
-               HorizontalTextAlignment="Center"/>-->
             
-            
-                
                 <Label x:Name="SecondNumberTB" Text="5" HorizontalOptions="End" 
                 VerticalOptions="End"
                    
@@ -58,19 +43,30 @@
                HorizontalTextAlignment="Center"/>
             </StackLayout>
             <StackLayout>
-                <Entry x:Name="InputTB" BackgroundColor="Gray" WidthRequest="200" 
+            <Entry x:Name="InputTB" BackgroundColor="Gray" WidthRequest="200" 
                    HeightRequest="55" HorizontalOptions="CenterAndExpand"
                    Margin="0,70,0,0"  
                    Placeholder="Your answer" 
-                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Keyboard="Numeric"   CharacterSpacing="3"/>
-            </StackLayout>
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                       Keyboard="Numeric"   CharacterSpacing="3">
+                <Entry.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#0942B6" Offset="0.3"/>
+                        <GradientStop Color="#5943c9" Offset="1"/>
+                    </LinearGradientBrush>
+                </Entry.Background>
+            </Entry>
+        </StackLayout>
             <StackLayout>
-                <Button Text="Check!" HorizontalOptions="CenterAndExpand" WidthRequest="130"
-                    Margin="0,50,0,0"
-                    BackgroundColor="DarkGray"
-                    Clicked="SubmetBTN_Click"
-                    />
+                <Button x:Uid="SubmitBTN" Text="Check!" HorizontalOptions="CenterAndExpand" WidthRequest="140"
+                        Margin="0,50,0,0"
+                        BackgroundColor="DarkGray"
+                        Clicked="SubmetBTN_Click" CornerRadius="15"
+                        >
+                    <Button.Background>
+                        <Color >#B919AB</Color>
+                    </Button.Background>
+                </Button>
             </StackLayout>
         </StackLayout>
-    </ScrollView>
 </ContentPage>

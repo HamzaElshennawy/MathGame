@@ -9,7 +9,6 @@ namespace Math_Game
         public App()
         {
             InitializeComponent();
-
             MainPage = new MainPage();
         }
 

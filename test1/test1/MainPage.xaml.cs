@@ -7,22 +7,38 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.CommunityToolkit;
 using Android.Widget;
+using static System.Net.Mime.MediaTypeNames;
+using static Android.App.Assist.AssistStructure;
+using System.Collections.ObjectModel;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Android.App;
+using System.Drawing.Drawing2D;
+
+
 
 namespace Math_Game
 {
     public partial class MainPage : ContentPage
     {
+
+
+        List<NumberGenerator> LostNumbers = new List<NumberGenerator>();
+        List<NumberGenerator> GeneratedNumbers = new List<NumberGenerator>();
         NumberGenerator numberGenerator = new NumberGenerator();
         Score score = new Score();
+        int SelectedIndex;
+
+
+        [Obsolete]
         public MainPage()
         {
             InitializeComponent();
-            init(numberGenerator);
-            CorrectLBL.IsVisible = false;
+            GenerateNumbers();
+            DisplayNextSetOfNumbers();
             InputTB.Completed += SubmetBTN_Click;
         }
 
-        List<NumberGenerator> LostNumbers = new List<NumberGenerator>();
+        
 
         private void SubmetBTN_Click(object sender, EventArgs e)
         {
@@ -36,8 +52,7 @@ namespace Math_Game
                 }
                 else
                 {
-                    numberGenerator = new NumberGenerator();
-                    init(numberGenerator);
+                    DisplayNextSetOfNumbers();
                 }
             }
             catch (Exception)
@@ -53,22 +68,45 @@ namespace Math_Game
 
         public bool CheckAnswer()
         {
-            int result = numberGenerator.sum;
+            int result = GeneratedNumbers.ElementAt(SelectedIndex).sum;
             int inputFromUser = int.Parse(InputTB.Text);
             if (inputFromUser == result)
             {
-                InputTB.Text="";
+                InputTB.Text = "";
                 score.score++;
                 ScoreLBL.Text = score.score.ToString();
                 Toast.MakeText(Android.App.Application.Context, "Correct", ToastLength.Long).Show();
+                numberGenerator.SuccededTimesInARow++;
                 return true;
             }
-            score.score--;
-            CorrectLBL.Text = "Wrong!!";
+            if(!(score.score == 0))
+            {
+                score.score--;
+            }
             InputTB.Text = "";
             ScoreLBL.Text = score.score.ToString();
             Toast.MakeText(Android.App.Application.Context, "Wrong", ToastLength.Long).Show();
+            LostNumbers.Add(numberGenerator);
+            numberGenerator.SuccededTimesInARow = 0;
             return false;
+        }
+        public void GenerateNumbers()
+        {
+            for(int i = 0;i<50;i++)
+            {
+                NumberGenerator number = new NumberGenerator();
+                if(!GeneratedNumbers.Contains(number))
+                {
+                    GeneratedNumbers.Add(number); 
+                }
+            }
+        }
+        public void DisplayNextSetOfNumbers()
+        {
+            var random = new Random();
+            int RandomIndex = random.Next(0, GeneratedNumbers.Count);
+            init(GeneratedNumbers.ElementAt(RandomIndex));
+            SelectedIndex = RandomIndex;
         }
     }
 }
